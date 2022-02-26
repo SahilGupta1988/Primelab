@@ -1,13 +1,23 @@
+import React, { SyntheticEvent, useState } from "react";
 import Head from "next/head";
 import { HomeLayout } from "components";
 import { useSelector } from "react-redux";
-import { Card, CardContent, Grid } from "@mui/material";
-import { ContactsCard } from "containers";
+import { Box, Card, CardContent, Grid, Tab } from "@mui/material";
+import { ContactsCard, CollectiblesTab, TransactionsTab } from "containers";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
+import { HomeTab } from "utils";
 
 const Home = () => {
   const st = useSelector((state) => state);
-  console.log(st);
-  const handleCardClick = () => {};
+  console.log(st)
+  const [value, setValue] = useState<string>(HomeTab.Collectibles);
+
+  const handleChange = (
+    _event: SyntheticEvent<Element, Event>,
+    newValue: string
+  ) => {
+    setValue(newValue);
+  };
   return (
     <div>
       <Head>
@@ -30,6 +40,31 @@ const Home = () => {
             <Card sx={{ minHeight: "168px" }}>
               <CardContent></CardContent>
             </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                >
+                  <Tab
+                    label={HomeTab.Collectibles}
+                    value={HomeTab.Collectibles}
+                  />
+                  <Tab
+                    label={HomeTab.Transactions}
+                    value={HomeTab.Transactions}
+                  />
+                </TabList>
+              </Box>
+              <TabPanel value={HomeTab.Collectibles}>
+                <CollectiblesTab />
+              </TabPanel>
+              <TabPanel value={HomeTab.Transactions}>
+                <TransactionsTab />
+              </TabPanel>
+            </TabContext>
           </Grid>
         </Grid>
       </main>
