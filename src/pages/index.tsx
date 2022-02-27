@@ -20,6 +20,7 @@ const Home = () => {
   ) => {
     setValue(newValue);
   };
+  const style=".MuiButtonBase-root.Mui-selected{color:#33373B;}"
   return (
     <div>
       <Head>
@@ -58,9 +59,11 @@ const Home = () => {
           <Grid item xs={12}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <style>{style}</style>
                 <TabList
                   onChange={handleChange}
                   aria-label="lab API tabs example"
+                  TabIndicatorProps={{style: {background:'#33373B'}}}
                 >
                   <Tab
                     sx={{ flex: "auto", fontWeight: "600", fontSize: "15px", color: "#6F6E73", }}
