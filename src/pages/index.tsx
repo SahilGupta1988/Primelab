@@ -11,7 +11,6 @@ import { NFTIcon } from "../../public/assets/icons/NFTIcon";
 
 const Home = () => {
   const st = useSelector((state) => state);
-  console.log(st)
   const [value, setValue] = useState<string>(HomeTab.Collectibles);
 
   const handleChange = (

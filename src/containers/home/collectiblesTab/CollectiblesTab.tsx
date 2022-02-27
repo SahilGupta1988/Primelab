@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Box, List, ListItem, ListItemText } from "@mui/material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Collectible } from "store/collectible/type";
+
 
 interface ICollectibleTab {
   collectibles: Collectible[];
@@ -18,6 +20,7 @@ const CollectiblesTab: FC<ICollectibleTab> = (props) => {
               primary={collectible.name}
               secondary={collectible.createdBy}
             />
+            <ChevronRightIcon/>
           </ListItem>
         ))}
       </List>

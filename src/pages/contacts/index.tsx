@@ -6,7 +6,6 @@ import { ContactList } from "containers";
 
 const Contacts = () => {
   const st = useSelector((state) => state);
-  console.log(st);
   return (
     <div>
       <Head>
