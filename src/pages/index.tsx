@@ -74,10 +74,10 @@ const Home = () => {
                   />
                 </TabList>
               </Box>
-              <TabPanel value={HomeTab.Collectibles}>
+              <TabPanel sx={{padding:0}} value={HomeTab.Collectibles}>
                 <CollectiblesTab />
               </TabPanel>
-              <TabPanel value={HomeTab.Transactions}>
+              <TabPanel sx={{padding:0}} value={HomeTab.Transactions}>
                 <TransactionsTab />
               </TabPanel>
             </TabContext>
