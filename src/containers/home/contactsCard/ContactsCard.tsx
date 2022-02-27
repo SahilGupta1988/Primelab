@@ -15,12 +15,12 @@ const ContactsCard: FC<IContactsCard> = (props) => {
   };
 
   return (
-    <Card sx={{ minHeight: "99px", background: "#F5F5F5" }}>
+    <Card sx={{ minHeight: "99px", background: "#EAEFFF" }}>
       <CardContent onClick={handleCardClick}>
         <Box>
-          <Typography>Contacts</Typography>
+          <Typography sx={{fontWeight: "600",fontSize: "16px",color: "#414047",}}>Contacts</Typography>
         </Box>
-        <Box sx={{ display: "flex", overflowX: "auto" }}>
+        <Box sx={{ display: "flex", overflowX: "auto",marginTop:"12px" }}>
           {contacts.map((contact) => (
             <Avatar
               key={contact.id}

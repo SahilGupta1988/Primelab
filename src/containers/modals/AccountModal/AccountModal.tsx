@@ -7,8 +7,9 @@ import {
   ListItemAvatar,
   ListItemText,
   Divider,
+  Box,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
+import { PersonIcon } from "../../../../public/assets/icons/PersonIcon";
 import { blue } from "@mui/material/colors";
 import React, { FC } from "react";
 import { ModalType } from "utils";
@@ -28,27 +29,26 @@ const AccountModal: FC<IAccountModal> = (props) => {
     setActiveAccount(account);
     handleClose();
   };
-  const handleAddAccount = () => {};
+  const handleAddAccount = () => { };
   const handleClose = () => {
     closeModal(ModalType.AccountModal);
   };
 
   return (
-    <Dialog sx={{ width: "90%" }} onClose={handleClose} open={open}>
-      <DialogTitle sx={{ padding: "10px" }}>My accounts</DialogTitle>
+    <Dialog sx={{ width: "100%" }} onClose={handleClose} open={open}>
+      <DialogTitle sx={{ padding: "10px", fontWeight: "600", fontSize: "14px", color: "#A0A0A2" }}>My accounts</DialogTitle>
       <List sx={{ pt: 0 }}>
         {accounts.map((account) => (
           <ListItem
             button
             onClick={() => handleAccountClick(account)}
             key={account.id}
+            sx={{ display: "flex", alignItems: "center" }}
           >
-            <ListItemAvatar>
-              <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                <PersonIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={account.accountName} />
+            <Box component="div" sx={{ marginRight: "5px", display: "flex" }}>
+              <PersonIcon />
+            </Box>
+            <ListItemText sx={{ margin: 0, fontSize: "15px", fontWeight: "600", color: "#414047" }} primary={account.accountName} />
           </ListItem>
         ))}
         <Divider />

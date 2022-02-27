@@ -27,12 +27,12 @@ const Home = () => {
       </Head>
 
       <main>
-        <Grid container spacing={2} sx={{ marginTop: "10px" }}>
+        <Grid container spacing={2} sx={{ marginTop: "10px", padding: "10px" }}>
           <Grid item xs={6}>
             <ContactsCard />
           </Grid>
           <Grid item xs={6}>
-            <Card sx={{ minHeight: "99px" }}>
+            <Card sx={{ minHeight: "99px", height: "100%" }}>
               <CardContent></CardContent>
             </Card>
           </Grid>
@@ -49,10 +49,12 @@ const Home = () => {
                   aria-label="lab API tabs example"
                 >
                   <Tab
+                    sx={{ flex: "auto", fontWeight: "600", fontSize: "15px", color: "#6F6E73", }}
                     label={HomeTab.Collectibles}
                     value={HomeTab.Collectibles}
                   />
                   <Tab
+                    sx={{ flex: "auto", fontWeight: "600", fontSize: "15px", color: "#6F6E73", }}
                     label={HomeTab.Transactions}
                     value={HomeTab.Transactions}
                   />
