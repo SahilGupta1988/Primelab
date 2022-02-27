@@ -8,6 +8,7 @@ export interface ContactState {
 export interface Contact {
   id: number;
   url: string;
+  username : string
   name: string;
   info: string;
 }
