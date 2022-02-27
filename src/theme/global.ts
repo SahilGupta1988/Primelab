@@ -19,6 +19,11 @@ const useStyles: any = makeStyles(() =>
         width: "100%",
         fontFamily: "Times New Roman",
       },
+      ".MuiDialog-paper": {
+        width: "80%",
+        position: "absolute",
+        top: "40px",
+      },
     },
   })
 );

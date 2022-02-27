@@ -7,10 +7,10 @@ import {
   ListItemAvatar,
   ListItemText,
   Divider,
-  Box,
+  ListItemIcon,
 } from "@mui/material";
 import { PersonIcon } from "../../../../public/assets/icons/PersonIcon";
-import { blue } from "@mui/material/colors";
+import DoneIcon from "@mui/icons-material/Done";
 import React, { FC } from "react";
 import { ModalType } from "utils";
 import { Account } from "store/account/type";
@@ -29,14 +29,24 @@ const AccountModal: FC<IAccountModal> = (props) => {
     setActiveAccount(account);
     handleClose();
   };
-  const handleAddAccount = () => { };
+  const handleAddAccount = () => {};
+  const handleImportAccount = () => {};
   const handleClose = () => {
     closeModal(ModalType.AccountModal);
   };
 
   return (
     <Dialog sx={{ width: "100%" }} onClose={handleClose} open={open}>
-      <DialogTitle sx={{ padding: "10px", fontWeight: "600", fontSize: "14px", color: "#A0A0A2" }}>My accounts</DialogTitle>
+      <DialogTitle
+        sx={{
+          padding: "10px",
+          fontWeight: "600",
+          fontSize: "14px",
+          color: "#A0A0A2",
+        }}
+      >
+        My accounts
+      </DialogTitle>
       <List sx={{ pt: 0 }}>
         {accounts.map((account) => (
           <ListItem
@@ -45,15 +55,32 @@ const AccountModal: FC<IAccountModal> = (props) => {
             key={account.id}
             sx={{ display: "flex", alignItems: "center" }}
           >
-            <Box component="div" sx={{ marginRight: "5px", display: "flex" }}>
-              <PersonIcon />
-            </Box>
-            <ListItemText sx={{ margin: 0, fontSize: "15px", fontWeight: "600", color: "#414047" }} primary={account.accountName} />
+            <ListItemAvatar>
+              <Avatar alt={account.accountName}>
+                <PersonIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              sx={{
+                margin: 0,
+                fontSize: "15px",
+                fontWeight: "600",
+                color: "#414047",
+              }}
+              primary={account.accountName}
+              secondary={account.info}
+            />
+            {activeAccount.id === account.id && <DoneIcon />}
           </ListItem>
         ))}
         <Divider />
         <ListItem autoFocus button onClick={() => handleAddAccount()}>
-          <ListItemText primary="Add account" />
+          <ListItemIcon></ListItemIcon>
+          <ListItemText primary="Create account" />
+        </ListItem>
+        <ListItem autoFocus button onClick={() => handleImportAccount()}>
+          <ListItemIcon></ListItemIcon>
+          <ListItemText primary="Import Account" />
         </ListItem>
       </List>
     </Dialog>

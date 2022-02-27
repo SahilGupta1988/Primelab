@@ -16,37 +16,51 @@ import { PersonIcon } from "../../../public/assets/icons/PersonIcon";
 import { DownIcon } from "../../../public/assets/icons/DownIcon";
 
 interface INavbar {
+  accountModal: boolean;
   activeAccount: Account;
   openModal: (modalName: string) => void;
 }
 
 const Navbar: FC<INavbar> = (props) => {
-  const { activeAccount, openModal } = props;
+  const { activeAccount, accountModal, openModal } = props;
   const handleMenuClick = () => {
     openModal(ModalType.AccountModal);
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ background: "#F5F5F5", boxShadow: "none",padding:"13px 0" }} color="default" position="static">
+      <AppBar
+        sx={{ background: "#F5F5F5", boxShadow: "none", padding: "13px 0" }}
+        color="default"
+        position="static"
+      >
         <Toolbar>
           <IconButton color="inherit" aria-label="open drawer">
-            {/* <MenuIcon /> */}
             <Logo />
           </IconButton>
-          <Box component="div" sx={{ position: "relative", margin: "0 7px 0 auto", }}>
+          <Box
+            component="div"
+            sx={{
+              position: "relative",
+              margin: "0 7px 0 auto",
+              zIndex: accountModal ? 99999 : 0,
+            }}
+          >
             <Chip
               icon={
-                <Box component="div"
+                <Box
+                  component="div"
                   sx={{
                     border: "2px solid #33373B",
                     padding: "2px",
                     borderRadius: "50%",
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center"
-                  }}>
+                    alignItems: "center",
+                  }}
+                >
                   <PersonIcon />
-                </Box>}
+                </Box>
+              }
               label={activeAccount.accountName}
               variant="outlined"
               sx={{
@@ -57,11 +71,19 @@ const Navbar: FC<INavbar> = (props) => {
                 borderRadius: "30px",
                 fontSize: "14px",
                 color: "#33373B",
-                fontWeight: "600"
+                fontWeight: "600",
               }}
               onClick={handleMenuClick}
             />
-            <Box component="div" sx={{ position: "absolute", right: "13px", top: "50%", transform: "translateY(-50%)" }}>
+            <Box
+              component="div"
+              sx={{
+                position: "absolute",
+                right: "13px",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+            >
               <DownIcon />
             </Box>
           </Box>
