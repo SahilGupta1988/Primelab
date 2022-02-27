@@ -2,10 +2,12 @@ import React, { SyntheticEvent, useState } from "react";
 import Head from "next/head";
 import { HomeLayout } from "components";
 import { useSelector } from "react-redux";
-import { Box, Card, CardContent, Grid, Tab } from "@mui/material";
+import { Box, Button, Card, CardContent, Grid, Tab, Typography } from "@mui/material";
 import { ContactsCard, CollectiblesTab, TransactionsTab } from "containers";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { HomeTab } from "utils";
+import { BoxesIcon } from "../../public/assets/icons/BoxesIcon";
+import { NFTIcon } from "../../public/assets/icons/NFTIcon";
 
 const Home = () => {
   const st = useSelector((state) => state);
@@ -32,13 +34,25 @@ const Home = () => {
             <ContactsCard />
           </Grid>
           <Grid item xs={6}>
-            <Card sx={{ minHeight: "99px", height: "100%" }}>
-              <CardContent></CardContent>
+            <Card sx={{ minHeight: "99px", height: "100%", background: "#885FFF", position: "relative" }}>
+              <CardContent sx={{ position: "relative", zIndex: 1 }}>
+                <Typography sx={{ fontWeight: "600", fontSize: "16px", color: "#ffffff", }}>web3 Apps</Typography>
+                <Button sx={{ background: "#18D7A9", marginTop: "10px", boxShadow: "none", fontSize: 12, padding: "2px 4px", border: "none", textTransform: "capitalize" }} variant="contained" size="small">12 Connected</Button>
+              </CardContent>
+              <Box component="div" sx={{ position: "absolute", right: 0, top: 0, height: "100%" }}>
+                <BoxesIcon />
+              </Box>
             </Card>
           </Grid>
           <Grid item xs={12}>
-            <Card sx={{ minHeight: "168px" }}>
-              <CardContent></CardContent>
+            <Card sx={{ minHeight: "99px", height: "100%", background: "#F7E9FF", position: "relative" }}>
+              <CardContent sx={{ position: "relative", zIndex: 1 }}>
+                <Typography sx={{ fontWeight: "600", fontSize: "22px", color: "#414047" }}>Start <br /> Creating your <br /> NFT Today</Typography>
+                <Button sx={{ background: "#885FFF", marginTop: "10px", boxShadow: "none", fontSize: 16, border: "none", textTransform: "capitalize" }} variant="contained" size="large">Create NFT</Button>
+              </CardContent>
+              <Box component="div" sx={{ position: "absolute", right: 0, top: 0, height: "100%" }}>
+                <NFTIcon/>
+              </Box>
             </Card>
           </Grid>
           <Grid item xs={12}>
